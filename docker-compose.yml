@@ -1,0 +1,23 @@
+version: "3"
+services:
+  db:
+    build: ./mysql/docker
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=dbpass
+      - MYSQL_DATABASE=dbtest
+    volumes:
+      - ./mysql/lib/:/var/lib/mysql/
+      - ./mysql/conf.d/:/etc/mysql/conf.d/
+      - ./mysql/initdb/:/docker-entrypoint-initdb.d/
+  web:
+    build: ./web/docker
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+     - ./web/www/:/var/www/
+    depends_on:
+      - db
+
