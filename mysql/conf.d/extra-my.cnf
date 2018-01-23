@@ -6,6 +6,6 @@ default-tmp-storage-engine=myisam
 innodb_doublewrite=Off
 innodb_log_file_size=4M
 innodb_log_files_in_group=2
-innodb_log_group_home_dir=/tmp
 innodb_fast_shutdown=0
-
+innodb_file_format=Barracuda
+innodb_large_prefix=on
