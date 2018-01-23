@@ -11,11 +11,13 @@ services:
       - ./mysql/lib/:/var/lib/mysql/
       - ./mysql/conf.d/:/etc/mysql/conf.d/
       - ./mysql/initdb/:/docker-entrypoint-initdb.d/
+    ports:
+      - "33306:3306"
   web:
     build: ./web/docker
     ports:
-      - "8080:80"
-      - "8443:443"
+      - "30080:80"
+      - "30443:443"
     volumes:
      - ./web/www/:/var/www/
     depends_on:
